@@ -6,9 +6,13 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:33:11 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/15 10:05:32 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/15 12:20:10 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/client.h"
+#include "../inc/client.h"
 
+int	main(int ac, char **av)
+{
+
+}

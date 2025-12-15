@@ -6,9 +6,9 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:33:57 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/15 09:49:27 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/15 12:20:21 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/server.h"
+#include "../inc/server.h"
 
