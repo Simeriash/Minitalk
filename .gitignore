@@ -1,3 +1,4 @@
 obj/
 src/libft/obj/
 *.a
+*.out

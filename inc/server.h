@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:37:01 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/15 10:55:26 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/15 16:34:06 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <signal.h>
+# include <sys/types.h>
 # include "../src/libft/libft.h"
 
 #endif
