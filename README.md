@@ -2,13 +2,16 @@
 
 # **Description**
 
-> [!NOTE]
-> Section that clearly presents the project, including its goal and a brief overview.
+The purpose of this project is to code a small data exchange program using UNIX signals.
 
 # **Instructions**
 
-> [!NOTE]
-> Section containing any relevant information about compilation, installation, and/or execution.
+The server must be started first. Upon launch, it must print its PID.
+
+The client takes two parameters:
+- The server PID.
+
+- The string to send.
 
 # **Ressources**
 
