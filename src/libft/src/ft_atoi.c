@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 07:20:56 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/16 11:00:09 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/16 13:26:50 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static void	ft_error(int err)
 {
 	if (err == 0)
-		ft_printf("Number superior than INT_MAX.\n");
+		ft_printf("Number greater than INT_MAX.\n");
 	else if (err == 1)
-		ft_printf("Number inferior than INT_MIN.\n");
+		ft_printf("Number smaller than INT_MIN.\n");
 	exit(EXIT_FAILURE);
 }
 
