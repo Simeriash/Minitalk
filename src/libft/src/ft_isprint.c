@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.h                                           :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15 09:35:26 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/16 10:41:16 by julauren         ###   ########.fr       */
+/*   Created: 2025/10/13 15:56:01 by julauren          #+#    #+#             */
+/*   Updated: 2025/12/12 15:32:46 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLIENT_H
-# define CLIENT_H
+#include "../libft.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include "../src/libft/libft.h"
-
-#endif
+int	ft_isprint(int c)
+{
+	if (c >= 32 && c <= 126)
+		return (1);
+	return (0);
+}

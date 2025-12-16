@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.h                                           :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15 09:35:26 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/16 10:41:16 by julauren         ###   ########.fr       */
+/*   Created: 2025/10/15 12:10:01 by julauren          #+#    #+#             */
+/*   Updated: 2025/12/12 15:32:46 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLIENT_H
-# define CLIENT_H
+#include "../libft.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include "../src/libft/libft.h"
-
-#endif
+int	ft_toupper(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
+}

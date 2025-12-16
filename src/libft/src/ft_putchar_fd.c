@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.h                                           :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15 09:35:26 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/16 10:41:16 by julauren         ###   ########.fr       */
+/*   Created: 2025/10/20 12:54:58 by julauren          #+#    #+#             */
+/*   Updated: 2025/12/12 15:32:46 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLIENT_H
-# define CLIENT_H
+#include "../libft.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include "../src/libft/libft.h"
+int	ft_putchar_fd(char c, int fd)
+{
+	int	i;
 
-#endif
+	i = write(fd, &c, 1);
+	return (i);
+}

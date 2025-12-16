@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.h                                           :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15 09:35:26 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/16 10:41:16 by julauren         ###   ########.fr       */
+/*   Created: 2025/10/15 12:37:31 by julauren          #+#    #+#             */
+/*   Updated: 2025/12/12 15:32:46 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLIENT_H
-# define CLIENT_H
+#include "../libft.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include "../src/libft/libft.h"
+char	*ft_strchr(const char *s, int c)
+{
+	int		i;
+	int		len;
+	char	*t;
 
-#endif
+	i = 0;
+	len = ft_strlen(s);
+	t = (char *)s;
+	while (i <= len)
+	{
+		if (t[i] == (char )c)
+			return (&t[i]);
+		i++;
+	}
+	return (NULL);
+}
