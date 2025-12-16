@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:33:11 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/16 10:51:57 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/16 12:13:55 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	ft_error(int ac, char **av)
 {
 	int	i;
+	int	num;
 
 	if (ac != 3)
 	{
@@ -22,16 +23,19 @@ static void	ft_error(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 	i = 0;
-	while (av[1][i] != '\0')
-	{
-		while (ft_isspace(av[1][i]))
-			i++;
-		if (!(ft_isdigit(av[1][i])))
-		{
-			ft_printf("Only positive integer not equal to zero are allowed for PID.\n");
-			exit(EXIT_FAILURE);
-		}
+	num = 0;
+	while (ft_isspace(av[1][i]))
 		i++;
+	if (ft_isdigit(av[1][i]))
+		num++;
+	while (ft_isdigit(av[1][i]))
+		i++;
+	while (ft_isspace(av[1][i]))
+		i++;
+	if ((av[1][i] == '\0' && num == 0) || av[1][i] != '\0')
+	{
+		ft_printf("Only one positive integer not equal to zero are allowed for PID.\n");
+		exit(EXIT_FAILURE);
 	}
 }
 
