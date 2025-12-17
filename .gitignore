@@ -2,3 +2,5 @@ obj/
 src/libft/obj/
 *.a
 *.out
+client
+server
