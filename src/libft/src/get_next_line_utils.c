@@ -6,23 +6,13 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 13:07:21 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/12 15:38:17 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/17 17:43:43 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-size_t	ft_strchr(const char *s)
+size_t	ft_strchr_gnl(const char *s)
 {
 	size_t	i;
 	size_t	len;
@@ -38,54 +28,7 @@ size_t	ft_strchr(const char *s)
 	return (-1);
 }
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
-{
-	size_t	i;
-	size_t	size;
-	size_t	slen;
-	char	*dest;
-
-	if (!s)
-		return (NULL);
-	slen = ft_strlen(s);
-	if (start >= slen)
-		size = 0;
-	else if (len > slen - start)
-		size = slen - start;
-	else
-		size = len;
-	dest = malloc(sizeof (*dest) * (size + 1));
-	if (!dest)
-		return (NULL);
-	i = 0;
-	while (i < size && s[start + i] != '\0')
-	{
-		dest[i] = s[start + i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
-{
-	size_t	i;
-	size_t	len;
-
-	i = 0;
-	len = ft_strlen(src);
-	if (size == 0)
-		return (len);
-	while (src[i] != '\0' && i < size - 1)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (len);
-}
-
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin_gnl(const char *s1, const char *s2)
 {
 	char	*dest;
 	size_t	len_1;

@@ -6,22 +6,22 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 11:20:08 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/12 15:32:46 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/17 16:18:05 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+char	*ft_substr(const char *str, unsigned int start, size_t len)
 {
 	size_t	i;
 	size_t	size;
 	size_t	slen;
 	char	*dest;
 
-	if (!s)
+	if (!str)
 		return (NULL);
-	slen = ft_strlen(s);
+	slen = ft_strlen(str);
 	if (start >= slen)
 		size = 0;
 	else if (len > slen - start)
@@ -32,9 +32,9 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	if (!dest)
 		return (NULL);
 	i = 0;
-	while (i < size && s[start + i] != '\0')
+	while (i < size && str[start + i] != '\0')
 	{
-		dest[i] = s[start + i];
+		dest[i] = str[start + i];
 		i++;
 	}
 	dest[i] = '\0';

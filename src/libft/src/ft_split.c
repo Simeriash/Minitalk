@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 14:07:06 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/12 15:32:46 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/17 16:23:13 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	ft_free_tab(char **tab, int n)
 	free(tab);
 }
 
-static char	**ft_tab(const char *s, char c, char **tab, int nb_str)
+static char	**ft_tab(const char *str, char c, char **tab, int nb_str)
 {
 	int	i;
 	int	start;
@@ -56,12 +56,12 @@ static char	**ft_tab(const char *s, char c, char **tab, int nb_str)
 	while (i < nb_str)
 	{
 		start = end;
-		while (s[start] == c && s[start] != '\0')
+		while (str[start] == c && str[start] != '\0')
 			start++;
 		end = start;
-		while (s[end] != c && s[end] != '\0')
+		while (str[end] != c && str[end] != '\0')
 			end++;
-		tab[i] = ft_substr(s, start, end - start);
+		tab[i] = ft_substr(str, start, end - start);
 		if (!tab[i])
 		{
 			ft_free_tab(tab, i);
@@ -72,18 +72,18 @@ static char	**ft_tab(const char *s, char c, char **tab, int nb_str)
 	return (tab);
 }
 
-char	**ft_split(const char *s, char c)
+char	**ft_split(const char *str, char c)
 {
 	int		nb_str;
 	char	**tab;
 
-	if (!s)
+	if (!str)
 		return (NULL);
-	nb_str = ft_count_str(s, c);
+	nb_str = ft_count_str(str, c);
 	tab = malloc(sizeof (*tab) * (nb_str + 1));
 	if (!tab)
 		return (NULL);
 	tab[nb_str] = NULL;
-	tab = ft_tab(s, c, tab, nb_str);
+	tab = ft_tab(str, c, tab, nb_str);
 	return (tab);
 }

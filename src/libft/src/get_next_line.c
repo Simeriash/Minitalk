@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 13:05:40 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/12 15:38:12 by julauren         ###   ########.fr       */
+/*   Updated: 2025/12/17 17:46:52 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static ssize_t	ft_full_buffer(int fd, char **buffer)
 		return (nb_read);
 	}
 	new_buffer[nb_read] = '\0';
-	tmp = ft_strjoin(*buffer, new_buffer);
+	tmp = ft_strjoin_gnl(*buffer, new_buffer);
 	if (*buffer)
 		free(*buffer);
 	free(new_buffer);
@@ -106,7 +106,7 @@ char	*get_next_line(int fd)
 	{
 		if (!buffer)
 			return (NULL);
-		i = ft_strchr(buffer);
+		i = ft_strchr_gnl(buffer);
 		if (i >= 0)
 			line = ft_print_line(&buffer, &i);
 		else
