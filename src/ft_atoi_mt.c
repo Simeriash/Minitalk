@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoi_mt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/29 16:14:38 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/09 13:46:35 by julauren         ###   ########.fr       */
+/*   Created: 2026/01/09 13:36:39 by julauren          #+#    #+#             */
+/*   Updated: 2026/01/09 13:42:41 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../inc/client.h"
 
-int	ft_atoi_ps(const char *str, int *ctrl)
+static void	ft_error(int err)
+{
+	if (err == 0)
+		ft_printf("Number greater than INT_MAX.\n");
+	else if (err == 1)
+		ft_printf("Number smaller than INT_MIN.\n");
+	exit(EXIT_FAILURE);
+}
+
+int	ft_atoi_mt(const char *str)
 {
 	int		i;
 	long	num;
@@ -21,21 +30,20 @@ int	ft_atoi_ps(const char *str, int *ctrl)
 	i = 0;
 	num = 0;
 	sign = 1;
+	while (ft_isspace(str[i]))
+		i++;
 	if (str[i] == '-')
 		sign = -sign;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (ft_isdigit(str[i]))
 	{
-		if ((num > INT_MAX && sign == 1) || (num * sign < INT_MIN))
-			break ;
+		if (num > INT_MAX && sign == 1)
+			ft_error(0);
+		if (((num * sign) < INT_MIN) && sign == -1)
+			ft_error(1);
 		num = num * 10 + str[i] - 48;
 		i++;
-	}
-	if ((num > INT_MAX && sign == 1) || (num * sign < INT_MIN))
-	{
-		num = 0;
-		*ctrl = 1;
 	}
 	return (sign * num);
 }

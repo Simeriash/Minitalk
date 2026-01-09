@@ -8,7 +8,7 @@ HEADER := inc/
 
 LIBFT := src/libft/libft.a
 
-SOURCES_CLIENT := client.c
+SOURCES_CLIENT := client.c ft_atoi_mt.c
 
 SOURCES_SERVER := server.c
 
@@ -26,7 +26,7 @@ OBJ_SERVER := $(addprefix $(OBJ_DIR), $(SOURCES_SERVER:.c=.o))
 all : $(NAME_CLIENT) $(NAME_SERVER)
 
 $(NAME_CLIENT) : $(OBJ_DIR) $(OBJ_CLIENT)
-#	$(MAKE) -C src/libft
+	$(MAKE) -C src/libft
 	$(CC) $(CFLAGS) $(OBJ_CLIENT) $(LIBFT) -o $@
 
 $(NAME_SERVER) : $(OBJ_SERVER)
@@ -42,11 +42,11 @@ clean :
 	rm -rf $(OBJ_CLIENT)
 	rm -rf $(OBJ_SERVER)
 	rm -rf $(OBJ_DIR)
-#	$(MAKE) -C src/libft -B clean
+	$(MAKE) -C src/libft -B clean
 
 fclean : clean
 	rm -rf $(NAME_CLIENT)
 	rm -rf $(NAME_SERVER)
-#	$(MAKE) -C src/libft -B fclean
+	$(MAKE) -C src/libft -B fclean
 
 re : fclean all
