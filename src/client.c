@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:33:11 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/09 14:01:39 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:11:47 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,15 @@ int	main(int ac, char **av)
 
 	ft_error(ac, av);
 	pid = ft_atoi_mt(av[1]);
+	if (pid == 0)
+	{
+		ft_printf("Only one positive integer is allowed for PID.\n");
+		exit(EXIT_FAILURE);
+	}
 	str = av[2];
 	ft_printf("PID : %d\nSTR : %s\n", pid, str);
+	kill(pid, 12);
+	kill(pid, 12);
 	kill(pid, 10);
 	return (0);
 }
