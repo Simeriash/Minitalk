@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:33:57 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/09 15:13:51 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/11 12:03:09 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(void)
 	i = 0;
 	pid = getpid();
 	ft_printf("PID : %d\n", pid);
-	while (i < 3)
+	while (i < 1)
 	{
 		ft_set_signal_action();
 		pause();
