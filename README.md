@@ -2,13 +2,13 @@
 
 # **Description**
 
-The purpose of this project is to code a small data exchange program using UNIX signals.
+The purpose of this project is to code a small data exchange program between two process using UNIX signals.
 
 # **Instructions**
 
 The server must be started first. Upon launch, it must print its PID.
 
-The client takes two parameters:
+The client executable takes two parameters:
 - The server PID.
 
 - The string to send.
