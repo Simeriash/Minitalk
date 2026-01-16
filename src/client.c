@@ -6,13 +6,13 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:33:11 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/16 12:26:07 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/16 15:57:04 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/client.h"
 
-static void	ft_error(int ac, char **av)
+static void	ft_error_args(int ac, char **av)
 {
 	int	i;
 	int	num;
@@ -41,12 +41,41 @@ static void	ft_error(int ac, char **av)
 	}
 }
 
+static void	ft_error(void)
+{
+	ft_printf("Number greater than INT_MAX.\n");
+	exit(EXIT_FAILURE);
+}
+
+static int	ft_atoi_mt(const char *str)
+{
+	int		i;
+	long	num;
+
+	i = 0;
+	num = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '+')
+		i++;
+	while (ft_isdigit(str[i]))
+	{
+		if (num > INT_MAX)
+			ft_error();
+		num = num * 10 + str[i] - 48;
+		i++;
+	}
+	if (num > INT_MAX)
+			ft_error();
+	return (num);
+}
+
 int	main(int ac, char **av)
 {
 	pid_t	pid;
-	// char	*bin;
+	char	*bin;
 
-	ft_error(ac, av);
+	ft_error_args(ac, av);
 	pid = ft_atoi_mt(av[1]);
 	if (pid == 0)
 	{
@@ -54,14 +83,9 @@ int	main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 	ft_printf("PID : %d\nSTR : %s\n", pid, av[2]);
-	// bin = ft_binary(av[2]);
-	// ft_printf("%s\n", bin);
-	// ft_message_in_the_bottle(av[2], pid);
-	kill(pid, 12);
-	sleep(1);
-	kill(pid, 10);
-	sleep(1);
-	kill(pid, 12);
-	// free(bin);
+	bin = ft_binary(av[2]);
+	ft_printf("%s\n", bin);
+	ft_message_in_the_bottle(bin, pid);
+	free(bin);
 	return (0);
 }

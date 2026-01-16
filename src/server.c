@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:33:57 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/16 12:57:03 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/16 15:35:17 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,29 @@ static void	ft_exit(char *bin)
 static void	ft_malloc(char *bin)
 {
 	char	*tmp;
+	int		i;
 
 	if (!bin)
 	{
-		bin = malloc(sizeof(*bin) * 64);
+		bin = malloc(sizeof(*bin) * 65);
 		if (!bin)
 			exit(EXIT_FAILURE);
-		return ;
+		bin[64] = '\0';
 	}
 	else
 	{
-		tmp = malloc(sizeof(*tmp) * (64 + ft_strlen(bin)));
+		tmp = malloc(sizeof(*tmp) * (65 + ft_strlen(bin)));
 		if (!tmp)
 			ft_exit(bin);
+		i = 0;
+		while (bin[i])
+		{
+			tmp[i] = bin[i];
+			i++;
+		}
+		tmp[64 + ft_strlen(bin)] = '\0';
+		free(bin);
+		bin = tmp;
 	}
 }
 
@@ -44,11 +54,8 @@ static void	ft_handler(int signal)
 	static int	i;
 	static char	*bin;
 
-	if (!bin)
-	{
+	if (!bin || (i > 0 && i % 64 == 0 && bin[i] == '\0'))
 		ft_malloc(bin);
-		i = 0;
-	}
 	if (signal == 10)
 		bin[i] = '0';
 	else if (signal == 12)

@@ -8,7 +8,7 @@ HEADER := inc/
 
 LIBFT := src/libft/libft.a
 
-SOURCES_CLIENT := client.c ft_atoi_mt.c ft_message_in_the_bottle.c
+SOURCES_CLIENT := client.c ft_binary.c ft_message_in_the_bottle.c
 
 SOURCES_SERVER := server.c
 
