@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:33:57 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/16 15:35:17 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:22:52 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ static void	ft_malloc(char *bin)
 
 static void	ft_handler(int signal)
 {
-	// static int	count;
 	static int	i;
 	static char	*bin;
+	// static int	count;
 
 	if (!bin || (i > 0 && i % 64 == 0 && bin[i] == '\0'))
 		ft_malloc(bin);

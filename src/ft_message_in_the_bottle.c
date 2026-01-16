@@ -6,18 +6,18 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 15:52:28 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/16 16:00:08 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:24:17 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/client.h"
 
-int	ctrl;
+int	g_ctrl;
 
 static void	ft_handler(int signal)
 {
 	if (signal == 12 || signal == 2 || signal == 3)
-		ctrl = 1;
+		g_ctrl = 1;
 }
 
 static void	ft_set_signal_action(void)
@@ -39,7 +39,7 @@ void	ft_message_in_the_bottle(char *bin, pid_t pid)
 	i = 0;
 	while (bin[i] != '\0')
 	{
-		if (ctrl == 1)
+		if (g_ctrl == 1)
 			break ;
 		if (bin[i] == '0')
 			kill(pid, 10);

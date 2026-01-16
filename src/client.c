@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:33:11 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/16 15:57:04 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:19:50 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	ft_atoi_mt(const char *str)
 		i++;
 	}
 	if (num > INT_MAX)
-			ft_error();
+		ft_error();
 	return (num);
 }
 
