@@ -10,7 +10,7 @@ LIBFT := src/libft/libft.a
 
 SOURCES_CLIENT := client.c ft_binary.c ft_message_in_the_bottle.c
 
-SOURCES_SERVER := server.c
+SOURCES_SERVER := server.c ft_seti.c ft_decode.c
 
 SRC_DIR := src/
 SRC_CLIENT := $(addprefix $(SRC_DIR), $(SOURCES_CLIENT))

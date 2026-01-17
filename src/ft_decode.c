@@ -1,0 +1,68 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_decode.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/17 14:55:08 by julauren          #+#    #+#             */
+/*   Updated: 2026/01/17 17:12:01 by julauren         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../inc/server.h"
+
+static int	ft_power(int nb, int power)
+{
+	int	i;
+	int	result;
+
+	if (power == 0)
+		return (1);
+	i = 1;
+	result = 1;
+	while (i <= power)
+	{
+		result *= nb;
+		i++;
+	}
+	return (result);
+}
+
+static void	ft_itoa_10(char **bin, char *str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (*bin[8 * i] != '\0')
+	{
+		j = 0;
+		str[i] = 0;
+		while (j < 8)
+		{
+			str[i] += *bin[8 * i + j] * ft_power(2, 7 - j);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	ft_decode(char **bin)
+{
+	char	*str;
+	int		len;
+
+	len = (ft_strlen(str)) / 8 - 1;
+	str = malloc(sizeof(*str) * (len + 1));
+	if (!str)
+	{
+		free(*bin);
+		exit(EXIT_FAILURE);
+	}
+	str[len] = '\0';
+	ft_itoa_10(&*bin, str);
+	ft_printf("\n%s\n", str);
+	free(bin);
+	free(str);
+}

@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:37:01 by julauren          #+#    #+#             */
-/*   Updated: 2025/12/17 10:15:17 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/17 17:10:50 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,19 @@
 # define SERVER_H
 
 # include <unistd.h>
+# include <stdlib.h>
 # include <signal.h>
 # include "../src/libft/libft.h"
+
+typedef struct s_var	t_var;
+struct	s_var
+{
+	int		signal;
+	int		i;
+	pid_t	pid;
+};
+
+void	ft_seti(void);
+void	ft_decode(char **bin);
 
 #endif
