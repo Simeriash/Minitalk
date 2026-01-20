@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 16:42:36 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/17 17:20:54 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/20 12:16:51 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,22 @@ static void	ft_malloc(char **bin, pid_t pid)
 	{
 		*bin = malloc(sizeof(**bin) * 65);
 		if (!(*bin))
-			ft_exit(&*bin, pid);
-		*bin[64] = '\0';
+			ft_exit(bin, pid);
+		(*bin)[64] = '\0';
 	}
 	else
 	{
 		tmp = malloc(sizeof(*tmp) * (65 + ft_strlen(*bin)));
 		if (!tmp)
-			ft_exit(&*bin, pid);
+			ft_exit(bin, pid);
 		i = 0;
-		while (*bin[i])
+		while ((*bin)[i])
 		{
-			tmp[i] = *bin[i];
+			tmp[i] = (*bin)[i];
 			i++;
 		}
 		tmp[64 + ft_strlen(*bin)] = '\0';
-		free(*bin);
+		free(bin);
 		*bin = tmp;
 	}
 }
@@ -53,17 +53,17 @@ static void	ft_signal(char **bin, t_var var, int *count)
 {
 	if (var.signal == 10)
 	{
-		*bin[var.i] = '0';
-		if ((var.i) % 8 == 0 || count > 0)
+		(*bin)[var.i] = '0';
+		if (*count > 0 || (var.i) % 8 == 0)
 			(*count)++;
 	}
 	else if (var.signal == 12)
 	{
-		*bin[var.i] = '1';
-		count = 0;
+		(*bin)[var.i] = '1';
+		*count = 0;
 	}
 	else if (var.signal == 2 || var.signal == 3)
-		ft_exit(&*bin, var.pid);
+		ft_exit(bin, var.pid);
 	kill(var.pid, 10);
 }
 
@@ -85,11 +85,13 @@ static void	ft_sigaction(int signal, siginfo_t *info, void *none)
 	if (count == 8)
 	{
 		bin[i] = '\0';
-		ft_decode(&bin);
+		ft_printf("\n%s\t%d\t%d\n", bin, i, count);
+		// ft_decode(&bin);
 		i = 0;
 		count = 0;
-		bin = NULL;
+		// bin = NULL;
 	}
+	free(bin);
 }
 
 void	ft_seti(void)
@@ -97,8 +99,8 @@ void	ft_seti(void)
 	struct sigaction	act;
 
 	ft_bzero(&act, sizeof(act));
-	act.sa_sigaction = &ft_sigaction;
 	act.sa_flags = SA_SIGINFO;
+	act.sa_sigaction = &ft_sigaction;
 	sigaction(2, &act, NULL);
 	sigaction(3, &act, NULL);
 	sigaction(10, &act, NULL);

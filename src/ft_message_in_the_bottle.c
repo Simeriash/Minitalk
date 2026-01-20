@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 15:52:28 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/16 16:24:17 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/20 12:59:47 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static void	ft_handler(int signal)
 {
 	if (signal == 12 || signal == 2 || signal == 3)
 		g_ctrl = 1;
+	if (signal == 10)
+		ft_printf("321");
 }
 
 static void	ft_set_signal_action(void)
@@ -47,6 +49,7 @@ void	ft_message_in_the_bottle(char *bin, pid_t pid)
 			kill(pid, 12);
 		ft_set_signal_action();
 		pause();
+		ft_printf("%d", i);
 		i++;
 	}
 }
