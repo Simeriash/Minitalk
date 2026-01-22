@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:33:57 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/22 11:43:33 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/22 17:26:42 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,11 @@
 int	main(void)
 {
 	pid_t	pid;
-	int		i;
 
 	pid = getpid();
 	ft_printf("PID : %d\n", pid);
-	i = 0;
+	ft_seti();
 	while (1)
-	{
-		ft_seti();
 		pause();
-		// ft_printf("%d", i);
-		i++;
-	}
 	return (0);
 }

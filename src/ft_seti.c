@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 16:42:36 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/22 12:34:00 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:34:05 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 char	*g_bin;
 
-static void	ft_exit(pid_t pid)
+static void	ft_exit(int kill_client, pid_t pid)
 {
 	if (g_bin)
 		free(g_bin);
-	kill(pid, 12);
+	if (kill_client)
+		kill(pid, 12);
 	exit(EXIT_FAILURE);
 }
 
@@ -31,14 +32,14 @@ static void	ft_malloc(pid_t pid)
 	{
 		g_bin = malloc(sizeof(*g_bin) * 65);
 		if (!g_bin)
-			ft_exit(pid);
+			ft_exit(1, pid);
 		g_bin[64] = '\0';
 	}
 	else
 	{
 		tmp = malloc(sizeof(*tmp) * (65 + ft_strlen(g_bin)));
 		if (!tmp)
-			ft_exit(pid);
+			ft_exit(1, pid);
 		i = 0;
 		while (g_bin[i])
 		{
@@ -65,14 +66,13 @@ static void	ft_signal(t_var var, int *count)
 		*count = 0;
 	}
 	else if (var.signal == 2 || var.signal == 3)
-		ft_exit(var.pid);
+		ft_exit(0, var.pid);
 	kill(var.pid, 10);
 }
 
 static void	ft_sigaction(int signal, siginfo_t *info, void *none)
 {
 	static int	i;
-	// static char	*bin;
 	static int	count;
 	t_var		var;
 
@@ -90,8 +90,8 @@ static void	ft_sigaction(int signal, siginfo_t *info, void *none)
 		ft_decode(g_bin);
 		i = 0;
 		count = 0;
-		// g_bin = NULL;
-		ft_exit(info->si_pid);
+		free(g_bin);
+		g_bin = NULL;
 	}
 }
 

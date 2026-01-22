@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 15:52:28 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/22 12:15:57 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/22 17:36:18 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_message_in_the_bottle(char *bin, pid_t pid)
 {
 	int		i;
 
+	ft_set_signal_action();
 	i = 0;
 	while (bin[i] != '\0')
 	{
@@ -45,9 +46,7 @@ void	ft_message_in_the_bottle(char *bin, pid_t pid)
 			kill(pid, 10);
 		else
 			kill(pid, 12);
-		ft_set_signal_action();
 		sleep(1);
-		// pause();
 		i++;
 	}
 }
