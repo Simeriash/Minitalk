@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 09:37:01 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/20 08:27:25 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:57:04 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ struct	s_var
 };
 
 void	ft_seti(void);
-void	ft_decode(char **bin);
+void	ft_decode(char *bin);
 
 #endif
