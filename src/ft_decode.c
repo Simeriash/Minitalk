@@ -6,7 +6,7 @@
 /*   By: julauren <julauren@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 14:55:08 by julauren          #+#    #+#             */
-/*   Updated: 2026/01/22 17:19:03 by julauren         ###   ########.fr       */
+/*   Updated: 2026/01/23 07:55:41 by julauren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_power(int nb, int power)
 	return (result);
 }
 
-static void	ft_itoa_10(char *bin, unsigned char *str, int len)
+static void	ft_itoa_10(char *bin, char *str, int len)
 {
 	int	i;
 	int	j;
@@ -51,7 +51,7 @@ static void	ft_itoa_10(char *bin, unsigned char *str, int len)
 
 void	ft_decode(char *bin)
 {
-	unsigned char	*str;
+	char	*str;
 	int		len;
 
 	len = (ft_strlen(bin)) / 8 - 1;

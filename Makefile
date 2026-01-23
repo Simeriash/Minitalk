@@ -25,12 +25,10 @@ OBJ_SERVER := $(addprefix $(OBJ_DIR), $(SOURCES_SERVER:.c=.o))
 
 all : $(NAME_CLIENT) $(NAME_SERVER)
 
-$(NAME_CLIENT) : $(OBJ_DIR) $(OBJ_CLIENT)
+$(NAME_CLIENT) : $(OBJ_DIR) $(OBJ_CLIENT) $(OBJ_SERVER)
 	$(MAKE) -C src/libft
-	$(CC) $(CFLAGS) $(OBJ_CLIENT) $(LIBFT) -o $@
-
-$(NAME_SERVER) : $(OBJ_SERVER)
-	$(CC) $(CFLAGS) $(OBJ_SERVER) $(LIBFT) -o $@
+	$(CC) $(CFLAGS) $(OBJ_CLIENT) $(LIBFT) -o $(NAME_CLIENT)
+	$(CC) $(CFLAGS) $(OBJ_SERVER) $(LIBFT) -o $(NAME_SERVER)
 
 $(OBJ_DIR) :
 	mkdir -p $(OBJ_DIR)
