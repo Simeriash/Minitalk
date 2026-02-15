@@ -60,13 +60,11 @@ static int	ft_atoi_mt(const char *str)
 		i++;
 	while (ft_isdigit(str[i]))
 	{
+		num = num * 10 + str[i] - 48;
 		if (num > INT_MAX)
 			ft_error();
-		num = num * 10 + str[i] - 48;
 		i++;
 	}
-	if (num > INT_MAX)
-		ft_error();
 	return (num);
 }
 
